@@ -1,0 +1,22 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int n = 43261596;
+    string answer = "";
+
+    while(n != 0)
+    {
+        int bit = n & 1;
+        answer = char(bit + '0') + answer;
+
+        n = n >> 1;
+    }
+
+    cout << "answer is " << answer << endl;
+
+    
+
+    return 0;
+}

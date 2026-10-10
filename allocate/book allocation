@@ -1,0 +1,46 @@
+class Solution {
+public:
+   // create a function 
+   bool isValid(vector<int> &nums, int m, int maxiAllowedPages){
+    int student = 1;
+    int pages = 0 ;
+    //loop for contihuous order
+    for(int i=0; i<nums.size() ; i++ ){
+        if(nums[i] > maxiAllowedPages) return false;// edge case 
+        if(pages + nums[i] <= maxiAllowedPages){
+            pages += nums[i];
+        }else {
+            student ++ ;
+            pages = nums[i];
+        }     
+    } 
+    return student > m ? false : true; //ternary operator  // syntax - condition ? value_if_true : value_if_false;
+}  
+
+    int findPages(vector<int> &nums, int m)  {
+        
+        //edge case 
+        if(m>nums.size()){
+            return -1;
+        }
+
+        int sum = 0;
+        for(int i = 0; i<nums.size() ; i++){
+            sum += nums[i];
+        }
+        int ans = -1;
+        int low = 0;
+        int high = sum;
+        while(low<=high){
+            int mid = low+(high-low) / 2;
+            if(isValid(nums, m, mid)){
+                high = mid-1;
+                ans = mid;
+            }else{
+                low = mid+1;
+            }
+        }
+        return ans;
+        
+    }
+};

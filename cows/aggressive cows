@@ -1,0 +1,36 @@
+class Solution {
+public:
+// firest we write a function 
+int isPossible(vector<int> &nums, int k,int minAllowedDistance){
+ 
+    int cows = 1;
+    int lastStallPosition = nums[0];
+    //loop
+    for(int i = 0; i < nums.size() ; i++){
+        if(nums[i]-lastStallPosition >= minAllowedDistance){
+            cows ++ ;
+            lastStallPosition = nums[i];
+        }
+        if(cows == k) return true ;
+    }
+    return false;
+
+}
+    int aggressiveCows(vector<int> &nums, int k) {
+        //1. Sort the array
+        sort(nums.begin(), nums.end());
+        int ans = -1;
+        int low = 0;
+        int high = nums[nums.size() - 1] - nums[0]; //high = maxValue - minValue;
+        while(low<=high){
+            int mid = low+(high-low) / 2;
+            if(isPossible(nums, k, mid )) {
+                ans = mid ;
+                low = mid+1;
+            } else {
+                high = mid -1;
+            }
+        }
+        return ans;
+    }
+};

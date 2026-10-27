@@ -5,9 +5,16 @@ using namespace std;
 // \0:- this is a null character jb tk hum null character add nhi krte tb tk hamare pass valifd atring nhi aati  
 
 int main() {
+    char str[100];
+    cout<<"enter char array :" ;
+    cin.getline(str, 100, '$');
+    cout <<"output:" <<str<<endl;
 
-    char str[] = "hello Vinita ";//Assigning a string 
-    cout << str << endl;
+  // hello Vinita : in programming terms this is called STRING LITERALS
+    //char str[] = "hello Vinita ";//Assigning a string 
+   // cout << str << endl;
+
+
     // char str[] = {'a','b','c','\0'};
     //cout << strlen(str) << endl;
     return 0;
